@@ -26,7 +26,7 @@ extension PayVC: UITableViewDelegate, UITableViewDataSource {
        
         //Shadow for names
         cell.chosenFruitName.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5).cgColor
-        cell.chosenFruitName.layer.shadowOffset = CGSize(width: 0.0, height: 7.0)
+        cell.chosenFruitName.layer.shadowOffset = CGSize(width: 0.0, height: 4.0)
         cell.chosenFruitName.layer.shadowOpacity = 1.0
         
         return  cell

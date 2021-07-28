@@ -81,7 +81,7 @@ extension FruitVC: UITableViewDelegate, UITableViewDataSource, HeaderDelegate, C
         
         //Shadow for names
         cell.fruitName.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5).cgColor
-        cell.fruitName.layer.shadowOffset = CGSize(width: 0.0, height: 7.0)
+        cell.fruitName.layer.shadowOffset = CGSize(width: 0.0, height: 4.0)
         cell.fruitName.layer.shadowOpacity = 1.0
         
         
