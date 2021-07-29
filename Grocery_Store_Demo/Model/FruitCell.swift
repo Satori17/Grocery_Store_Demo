@@ -22,6 +22,8 @@ class FruitCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         fruitQuantity.text = ""
+        
+        fruitImage.layer.cornerRadius = 50
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
