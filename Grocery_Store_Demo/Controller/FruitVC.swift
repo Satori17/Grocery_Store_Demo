@@ -9,8 +9,10 @@ import UIKit
 
 class FruitVC: UIViewController {
     
+    
     @IBOutlet weak var fruitTableView: UITableView!
     
+    var fruitCounterForHeader = 0
     
     var allFruit = [ Fruit(name: "Pineapple", price: 8.8, photo: #imageLiteral(resourceName: "Pineapple")),
                      Fruit(name: "Apple", price: 2.4, photo: #imageLiteral(resourceName: "Apple")),
@@ -26,7 +28,7 @@ class FruitVC: UIViewController {
         super.viewDidLoad()
         fruitTableView.delegate = self
         fruitTableView.dataSource = self
+        fruitTableView.backgroundColor = .clear
     }
-    
 }
 

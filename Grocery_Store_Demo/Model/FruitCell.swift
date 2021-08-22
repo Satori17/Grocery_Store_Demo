@@ -13,9 +13,6 @@ class FruitCell: UITableViewCell {
     @IBOutlet weak var fruitName: UILabel!
     @IBOutlet weak var fruitPrice: UILabel!
     @IBOutlet weak var fruitQuantity: UILabel!
-   
-    var oldValue = 0.0
-    
     
     weak var delegate: ChosenDelegate!
     

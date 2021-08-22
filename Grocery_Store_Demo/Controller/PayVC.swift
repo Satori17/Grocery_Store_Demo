@@ -36,7 +36,7 @@ class PayVC: UIViewController {
         for i in addedFruits {
             sum += i.price * i.quantity!
         }
-        overallPriceLabel.text = "\(String(format: "%.1f",sum)) GEL"
+        overallPriceLabel.text = "\(String(format: "%.1f",sum)) $"
     }
     
 

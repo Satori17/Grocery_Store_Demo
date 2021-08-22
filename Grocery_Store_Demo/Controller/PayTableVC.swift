@@ -21,7 +21,7 @@ extension PayVC: UITableViewDelegate, UITableViewDataSource {
         cell.chosenFruitImage.image = currentChosenFruit.photo
         cell.chosenFruitName.text = currentChosenFruit.name
         let newQuantity = currentChosenFruit.price * currentChosenFruit.quantity!
-        cell.chosenFruitPrice.text = "\(String(format: "%.1f",newQuantity)) GEL"
+        cell.chosenFruitPrice.text = "\(String(format: "%.1f",newQuantity)) $"
         
        
         //Shadow for names

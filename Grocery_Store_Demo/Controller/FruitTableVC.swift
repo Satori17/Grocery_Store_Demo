@@ -15,12 +15,12 @@ extension FruitVC: UITableViewDelegate, UITableViewDataSource, HeaderDelegate, C
         let index = (indexPath?.row)!
         let currentFruit = allFruit[index]
         
-        if currentFruit.quantity != nil {
+        if currentFruit.quantity != 0 {
             currentFruit.quantity! -= 1
+            fruitCounterForHeader -= 1
         }
         fruitTableView.reloadData()
     }
-    
     
     func chosenFruits(cell: FruitCell) {
         let indexPath = fruitTableView.indexPath(for: cell)
@@ -30,10 +30,10 @@ extension FruitVC: UITableViewDelegate, UITableViewDataSource, HeaderDelegate, C
         if currentFruit.quantity == nil {
             currentFruit.quantity = 0
         }
+        fruitCounterForHeader += 1
         currentFruit.quantity! += 1
         fruitTableView.reloadData()
     }
-    
     
     
     func headerButton() {
@@ -54,9 +54,9 @@ extension FruitVC: UITableViewDelegate, UITableViewDataSource, HeaderDelegate, C
         for fruit in allFruit{
             fruit.quantity = 0
         }
+        fruitCounterForHeader = 0
         fruitTableView.reloadData()
     }
-    
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -71,19 +71,17 @@ extension FruitVC: UITableViewDelegate, UITableViewDataSource, HeaderDelegate, C
         cell.fruitPrice.text = "\(currentFruit.price)"
         
         if currentFruit.quantity! > 0 {
-            cell.fruitQuantity.text = "\(String(format: "%.1f",currentFruit.quantity!))"
+            cell.fruitQuantity.text = "\(String(format: "%.0f",currentFruit.quantity!))"
         } else {
             cell.fruitQuantity.text = ""
         }
-    
         cell.delegate = self
         
         
         //Shadow for names
         cell.fruitName.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5).cgColor
-        cell.fruitName.layer.shadowOffset = CGSize(width: 0.0, height: 4.0)
-        cell.fruitName.layer.shadowOpacity = 1.0
-        
+        cell.fruitName.layer.shadowOffset = CGSize(width: 0.0, height: 5.0)
+        cell.fruitName.layer.shadowOpacity = 0.5
         
         return cell
     }
@@ -100,14 +98,20 @@ extension FruitVC: UITableViewDelegate, UITableViewDataSource, HeaderDelegate, C
         let view = UINib(nibName: "Header", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! HeaderView
         view.delegate = self
         
-        
+        if fruitCounterForHeader > 0 {
+            view.isHidden = false
+        } else {
+            view.isHidden = true
+        }
         return view
-        
     }
-    
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        80
+        
+        if fruitCounterForHeader > 0 {
+            return 80
+        } else {
+            return 10
+        }
     }
-    
 }

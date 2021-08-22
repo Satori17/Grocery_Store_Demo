@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tKL-UP-ZaR" userLabel="Fruit Table View">
-                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <rect key="frame" x="0.0" y="84" width="414" height="812"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FruitCell" rowHeight="100" id="Sxb-8U-xyk" customClass="FruitCell" customModule="Grocery_Store_Demo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="24.5" width="414" height="100"/>
@@ -96,13 +96,21 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grocery Store" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uIe-ke-1Jn">
+                                <rect key="frame" x="141.5" y="58" width="131.5" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="tKL-UP-ZaR" secondAttribute="trailing" id="5Yz-rl-wOT"/>
-                            <constraint firstItem="tKL-UP-ZaR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Ds9-gS-wGx"/>
+                            <constraint firstItem="uIe-ke-1Jn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DbG-Xk-PaR"/>
+                            <constraint firstItem="tKL-UP-ZaR" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="Ds9-gS-wGx"/>
                             <constraint firstAttribute="bottom" secondItem="tKL-UP-ZaR" secondAttribute="bottom" id="Z0R-wI-PRX"/>
+                            <constraint firstItem="tKL-UP-ZaR" firstAttribute="top" secondItem="uIe-ke-1Jn" secondAttribute="bottom" constant="2" id="Zlo-Bo-WjO"/>
                             <constraint firstItem="tKL-UP-ZaR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="bQw-4V-O2D"/>
                         </constraints>
                     </view>
@@ -175,7 +183,7 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TdN-aD-dH5">
-                                <rect key="frame" x="192.5" y="54" width="211.5" height="81"/>
+                                <rect key="frame" x="162.5" y="54" width="241.5" height="81"/>
                                 <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                 <state key="normal" title="Pay">
@@ -209,7 +217,7 @@
                             <constraint firstItem="RFk-yK-gQx" firstAttribute="leading" secondItem="KeE-tI-9Mu" secondAttribute="trailing" constant="10" id="YG5-6B-ulC"/>
                             <constraint firstItem="rf5-bu-Ef6" firstAttribute="bottom" secondItem="OaF-kN-mLK" secondAttribute="bottom" id="aA1-hE-dIE"/>
                             <constraint firstItem="OaF-kN-mLK" firstAttribute="top" secondItem="TdN-aD-dH5" secondAttribute="bottom" constant="10" id="aSb-WD-vEz"/>
-                            <constraint firstItem="TdN-aD-dH5" firstAttribute="leading" relation="lessThanOrEqual" secondItem="RFk-yK-gQx" secondAttribute="trailing" constant="60" id="e37-kV-YXg"/>
+                            <constraint firstItem="TdN-aD-dH5" firstAttribute="leading" relation="lessThanOrEqual" secondItem="RFk-yK-gQx" secondAttribute="trailing" constant="30" id="e37-kV-YXg"/>
                             <constraint firstItem="OaF-kN-mLK" firstAttribute="leading" secondItem="rf5-bu-Ef6" secondAttribute="leading" id="g2M-xB-hfy"/>
                             <constraint firstItem="rf5-bu-Ef6" firstAttribute="trailing" secondItem="TdN-aD-dH5" secondAttribute="trailing" constant="10" id="r2L-7f-w5R"/>
                             <constraint firstItem="rf5-bu-Ef6" firstAttribute="trailing" secondItem="OaF-kN-mLK" secondAttribute="trailing" id="v26-YF-2Sg"/>
@@ -231,8 +239,9 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="MK5-oE-kdY" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedTopBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="CdM-S3-bXz">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="CdM-S3-bXz">
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.58823531870000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
