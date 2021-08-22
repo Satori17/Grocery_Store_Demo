@@ -75,8 +75,8 @@ extension FruitVC: UITableViewDelegate, UITableViewDataSource, HeaderDelegate, C
         } else {
             cell.fruitQuantity.text = ""
         }
-        cell.delegate = self
         
+        cell.delegate = self
         
         //Shadow for names
         cell.fruitName.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5).cgColor
