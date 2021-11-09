@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Watermelon.jpg",
+      "filename" : "Watermelon.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Watermelon@2x.jpg",
+      "filename" : "Watermelon@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Watermelon@3x.jpg",
+      "filename" : "Watermelon@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

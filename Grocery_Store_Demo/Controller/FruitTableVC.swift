@@ -7,13 +7,19 @@
 
 import UIKit
 
-extension FruitVC: UITableViewDelegate, UITableViewDataSource, HeaderDelegate, ChosenDelegate, PayVCDelegate {
+extension FruitVC: UITableViewDelegate, UITableViewDataSource, HeaderDelegate, ChosenDelegate, PayVCDelegate, UISearchBarDelegate, UISearchResultsUpdating {
     
     
     func removedFruits(cell: FruitCell) {
         let indexPath = fruitTableView.indexPath(for: cell)
         let index = (indexPath?.row)!
-        let currentFruit = allFruit[index]
+        let currentFruit: Fruit!
+        
+        if searchController.isActive {
+            currentFruit = filteredFruits[index]
+        } else {
+            currentFruit = allFruit[index]
+        }
         
         if currentFruit.quantity != 0 {
             currentFruit.quantity! -= 1
@@ -25,7 +31,13 @@ extension FruitVC: UITableViewDelegate, UITableViewDataSource, HeaderDelegate, C
     func chosenFruits(cell: FruitCell) {
         let indexPath = fruitTableView.indexPath(for: cell)
         let index = (indexPath?.row)!
-        let currentFruit = allFruit[index]
+        let currentFruit: Fruit!
+        
+        if searchController.isActive {
+            currentFruit = filteredFruits[index]
+        } else {
+            currentFruit = allFruit[index]
+        }
         
         if currentFruit.quantity == nil {
             currentFruit.quantity = 0
@@ -54,35 +66,47 @@ extension FruitVC: UITableViewDelegate, UITableViewDataSource, HeaderDelegate, C
         for fruit in allFruit{
             fruit.quantity = 0
         }
+        navigationController?.navigationBar.isHidden = false
         fruitCounterForHeader = 0
         fruitTableView.reloadData()
     }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        allFruit.count
+        if searchController.isActive {
+            return filteredFruits.count
+        }
+       return allFruit.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "FruitCell", for: indexPath) as! FruitCell
-        let currentFruit = allFruit[indexPath.row]
+        let currentFruit: Fruit!
+       
+        
+        if searchController.isActive {
+            currentFruit = filteredFruits[indexPath.row]
+        } else {
+            currentFruit = allFruit[indexPath.row]
+        }
+        
+        
         cell.fruitImage.image = currentFruit.photo
         cell.fruitName.text = currentFruit.name
-        cell.fruitPrice.text = "\(currentFruit.price)"
-        
+        cell.fruitPrice.text = "\(currentFruit.price) $"
         if currentFruit.quantity! > 0 {
             cell.fruitQuantity.text = "\(String(format: "%.0f",currentFruit.quantity!))"
         } else {
             cell.fruitQuantity.text = ""
         }
-        
         cell.delegate = self
         
         //Shadow for names
         cell.fruitName.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5).cgColor
         cell.fruitName.layer.shadowOffset = CGSize(width: 0.0, height: 5.0)
         cell.fruitName.layer.shadowOpacity = 0.5
-        
+
         return cell
     }
     
@@ -90,6 +114,10 @@ extension FruitVC: UITableViewDelegate, UITableViewDataSource, HeaderDelegate, C
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 125
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        125
     }
     
     
@@ -114,4 +142,24 @@ extension FruitVC: UITableViewDelegate, UITableViewDataSource, HeaderDelegate, C
             return 10
         }
     }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        let searchText = searchBar.text!
+        filterFruits(searchText: searchText)
+    }
+    
+    
+    func filterFruits(searchText: String) {
+        filteredFruits = allFruit.filter({ Fruit in
+            if searchController.searchBar.text != "" {
+                let searchTextMatch = Fruit.name.lowercased().hasPrefix(searchText.lowercased())
+                return searchTextMatch
+            } else {
+                    return true
+            }
+        })
+        fruitTableView.reloadData()
+    }
+    
 }

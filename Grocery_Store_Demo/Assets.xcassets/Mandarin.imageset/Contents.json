@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Mandarin.jpg",
+      "filename" : "Mandarin.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Mandarin@2x.jpg",
+      "filename" : "Mandarin@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Mandarin@3x.jpg",
+      "filename" : "Mandarin@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

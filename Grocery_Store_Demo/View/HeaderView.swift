@@ -22,7 +22,6 @@ class HeaderView: UIView  {
         checkoutButton.layer.shadowOpacity = 1.0
     }
     
-    
     @IBAction func checkoutButtonPressed(_ sender: UIButton) {
         
         delegate.headerButton()
